@@ -3,12 +3,12 @@ package com.giovannimartinus.braintrainer;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         CountDownTimer countDownTimer;
 
         boolean isActive = false;
-        //int solution;
+        int solution;
 
         // enable or disable answer buttons
         private void buttonEnabled(GridLayout gridLayout) {
@@ -40,17 +40,32 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // generate the equation
-        //private void equationView() {
-        //    Random random = new Random();
+        private void equationView() {
+            Random random = new Random();
 
-        //    int x = random.nextInt(100);
-        //    int z = random.nextInt(100);
+            int x = random.nextInt(100);
+            int y = random.nextInt(100);
 
-        //    String operators = "+-*/";
-        //    String xyz = x + Character.toString(operators.charAt(random.nextInt(operators.length()))) + z;
+            String operators = "+-*/";
+            String operator = Character.toString(operators.charAt(random.nextInt(operators.length())));
 
-        //    solution = Integer.parseInt(xyz);
-        //}
+            String xyz = x + operator + y;
+
+            if (operator == "+") {
+                solution = x + y;
+            } else if (operator == "-") {
+                solution = x - y;
+            } else if (operator == "*") {
+                solution = x * y;
+            } else if (operator == "/") {
+                solution = x / y;
+            } else {
+                solution = 999;
+            }
+
+            Log.i("Equation", xyz);
+            Log.i("Solution",Integer.toString(solution));
+        }
 
         /* check if selected answer matches solution
         private void answerCheck(Button button) {
@@ -115,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
         private void hitPlay() {
             buttonEnabled(answerButtonLayout);
             countDown();
-            //equationView();
+            equationView();
         }
 
     }
