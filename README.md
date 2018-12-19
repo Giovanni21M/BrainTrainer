@@ -6,4 +6,4 @@ skills within a 30 second time frame.
 See how well you're doing and win or lose once time is up.
 The option to play again is available.
 
-Tested on Windows 10 in Android Studio 2.2.1. Written in Java.
+Developed on Windows 10 in Android Studio 2.2.1. Written in Java.
