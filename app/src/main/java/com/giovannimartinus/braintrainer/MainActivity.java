@@ -25,44 +25,43 @@ public class MainActivity extends AppCompatActivity {
         CountDownTimer countDownTimer;
 
         boolean isActive = false;
-        int solution;
+        //int solution;
 
         // enable or disable answer buttons
         private void buttonEnabled(GridLayout gridLayout) {
-            ArrayList<View> gridLayoutButtons = gridLayout.getTouchables();
-
-            for (View view : gridLayoutButtons) {
-                if(view instanceof Button && view.isEnabled()) {
-                    view.setEnabled(false);
-                } else if (view instanceof  Button && view.isEnabled() == false){
-                    view.setEnabled(true);
+            for (int i = 0; i < gridLayout.getChildCount(); i++) {
+                View child = gridLayout.getChildAt(i);
+                if (child.isEnabled()) {
+                    child.setEnabled(false);
+                } else {
+                    child.setEnabled(true);
                 }
             }
         }
 
         // generate the equation
-        private void equationView() {
-            Random random = new Random();
+        //private void equationView() {
+        //    Random random = new Random();
 
-            int x = random.nextInt(100);
-            int z = random.nextInt(100);
+        //    int x = random.nextInt(100);
+        //    int z = random.nextInt(100);
 
-            String operators = "+-*/";
-            String xyz = x + Character.toString(operators.charAt(random.nextInt(operators.length()))) + z;
+        //    String operators = "+-*/";
+        //    String xyz = x + Character.toString(operators.charAt(random.nextInt(operators.length()))) + z;
 
-            solution = Integer.parseInt(xyz);
-        }
+        //    solution = Integer.parseInt(xyz);
+        //}
 
-        // check if selected answer matches solution
+        /* check if selected answer matches solution
         private void answerCheck(Button button) {
             if (button.getText() == Integer.toString(solution)) {
                 feedBack(1);
             } else if (button.getText() != Integer.toString(solution)) {
                 feedBack(2);
             }
-        }
+        }*/
 
-        // answer chosen by user
+        /* answer chosen by user
         private void answerButton(View view) {
             Button clickedButton = (Button) view;
 
@@ -80,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                     answerCheck(clickedButton); // a view may need to be passed by specific id instead
                     break;
             }
-        }
+        }*/
 
         // convert millis to seconds and set countTextView
         private void countView(int x) {
@@ -109,22 +108,22 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        // display correct, wrong, and finally the score
-        private void feedBack(int x) {}
+        /* display correct, wrong, and finally the score
+        private void feedBack(int x) {}*/
 
         // start the game
         private void hitPlay() {
             buttonEnabled(answerButtonLayout);
             countDown();
-            equationView();
+            //equationView();
         }
 
     }
 
-    // determine which answer is chosen
+    /* determine which answer is chosen
     public void answerClick(View view) {
         brainGame.answerButton(view);
-    }
+    }*/
 
     // play game
     public void playClick(View view) {
