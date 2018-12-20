@@ -53,16 +53,6 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:text="Play the game"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="91dp"
-        android:id="@+id/feedbackView"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/countTextView"
-        android:layout_toEndOf="@+id/countTextView" />
-
     <Button
         android:text="Play"
         android:layout_width="wrap_content"
@@ -133,5 +123,15 @@
             android:enabled="false" />
 
     </GridLayout>
+
+    <TextView
+        android:text="Play the game"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="23dp"
+        android:id="@+id/feedbackView"
+        android:layout_above="@+id/playButton"
+        android:layout_alignRight="@+id/playButton"
+        android:layout_alignEnd="@+id/playButton" />
 
 </RelativeLayout>
