@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        // generate the equation
+        // generate the equation and set the solution
         private void equationView() {
             Random random = new Random();
 
@@ -51,20 +51,20 @@ public class MainActivity extends AppCompatActivity {
 
             String xyz = x + operator + y;
 
-            if (operator == "+") {
-                solution = x + y;
-            } else if (operator == "-") {
-                solution = x - y;
-            } else if (operator == "*") {
-                solution = x * y;
-            } else if (operator == "/") {
-                solution = x / y;
-            } else {
-                solution = 999;
+            switch (operator) {
+                case "+":
+                    solution = x + y;
+                    break;
+                case "-":
+                    solution = x - y;
+                    break;
+                case "*":
+                    solution = x * y;
+                    break;
+                case "/":
+                    solution = x / y;
+                    break;
             }
-
-            Log.i("Equation", xyz);
-            Log.i("Solution",Integer.toString(solution));
         }
 
         /* check if selected answer matches solution
