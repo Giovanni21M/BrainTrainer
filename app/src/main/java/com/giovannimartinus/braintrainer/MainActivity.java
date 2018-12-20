@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.TextView;
 
+import java.util.HashMap;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -16,7 +17,12 @@ public class MainActivity extends AppCompatActivity {
 
     final BrainGame brainGame = new BrainGame();
 
+    Button answerOne;
+    Button answerTwo;
+    Button answerThree;
+    Button answerFour;
     Button playButton;
+    TextView equationTextView;
     TextView countTextView;
     GridLayout answerButtonLayout;
 
@@ -39,6 +45,32 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+        // set the solution and other integers to a random answerButton
+        private void solutionView() {
+            Random random = new Random();
+
+            HashMap<Integer, Button> hashMap = new HashMap<Integer, Button>();
+            Button hashMapButton;
+
+            hashMap.put(0, answerOne);
+            hashMap.put(1, answerTwo);
+            hashMap.put(2, answerThree);
+            hashMap.put(3, answerFour);
+
+            int x = random.nextInt(3);
+
+            for (int i = 0; i < 3; i++) {
+                if (i == x) {
+                    hashMapButton = hashMap.get(x);
+                    hashMapButton.setText(solution);
+                } else {
+                    hashMapButton = hashMap.get(x);
+                    int y = random.nextInt(100);
+                    hashMapButton.setText(solution + y);
+                }
+            }
+        }
+
         // generate the equation and set the solution
         private void equationView() {
             Random random = new Random();
@@ -49,7 +81,8 @@ public class MainActivity extends AppCompatActivity {
             String operators = "+-*/";
             String operator = Character.toString(operators.charAt(random.nextInt(operators.length())));
 
-            String xyz = x + operator + y;
+            String xyz = x + " " + operator + " " + y;
+            equationTextView.setText(xyz);
 
             switch (operator) {
                 case "+":
@@ -65,6 +98,8 @@ public class MainActivity extends AppCompatActivity {
                     solution = x / y;
                     break;
             }
+
+            solutionView();
         }
 
         /* check if selected answer matches solution
@@ -151,7 +186,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        answerOne = (Button) findViewById(R.id.answerOne);
+        answerTwo = (Button) findViewById(R.id.answerTwo);
+        answerThree = (Button) findViewById(R.id.answerThree);
+        answerFour = (Button) findViewById(R.id.answerFour);
         answerButtonLayout = (GridLayout) findViewById(R.id.answerButtonLayout);
+        equationTextView = (TextView) findViewById(R.id.equationTextView);
         countTextView = (TextView) findViewById(R.id.countTextView);
         playButton = (Button) findViewById(R.id.playButton);
     }
