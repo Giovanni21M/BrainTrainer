@@ -117,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onFinish() {
                         isActive = false;
+                        countTextView.setText("0");
                         buttonEnabled(answerButtonLayout);
                     }
                 }.start();

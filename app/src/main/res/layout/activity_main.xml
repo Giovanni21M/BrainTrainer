@@ -11,7 +11,7 @@
     tools:context="com.giovannimartinus.braintrainer.MainActivity">
 
     <TextView
-        android:text="TextView"
+        android:text="30"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/countTextView"
@@ -28,7 +28,7 @@
         android:textAlignment="gravity" />
 
     <TextView
-        android:text="TextView"
+        android:text="Score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/scoreTextView"
@@ -45,7 +45,7 @@
         android:textAlignment="gravity" />
 
     <TextView
-        android:text="TextView"
+        android:text="Equation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="71dp"
@@ -54,7 +54,7 @@
         android:layout_centerHorizontal="true" />
 
     <TextView
-        android:text="TextView"
+        android:text="Play the game"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="91dp"
@@ -64,7 +64,7 @@
         android:layout_toEndOf="@+id/countTextView" />
 
     <Button
-        android:text="Button"
+        android:text="Play"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -81,7 +81,7 @@
         android:id="@+id/answerButtonLayout">
 
         <Button
-            android:text="Button"
+            android:text="Answer 1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/answerOne"
@@ -94,7 +94,7 @@
             android:enabled="false" />
 
         <Button
-            android:text="Button"
+            android:text="Answer 2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/answerTwo"
@@ -107,26 +107,26 @@
             android:enabled="false" />
 
         <Button
-            android:text="Button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/answerThree"
-            android:layout_column="0"
-            android:layout_row="1"
-            android:background="@android:color/holo_red_light"
-            android:minHeight="100dp"
-            android:minWidth="140dp"
-            android:onClick="answerClick"
-            android:enabled="false" />
-
-        <Button
-            android:text="Button"
+            android:text="Answer 4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/answerFour"
             android:layout_column="1"
             android:layout_row="1"
             android:background="@android:color/holo_orange_light"
+            android:minHeight="100dp"
+            android:minWidth="140dp"
+            android:onClick="answerClick"
+            android:enabled="false" />
+
+        <Button
+            android:text="Answer 3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/answerThree"
+            android:layout_column="0"
+            android:layout_row="1"
+            android:background="@android:color/holo_red_light"
             android:minHeight="100dp"
             android:minWidth="140dp"
             android:onClick="answerClick"
