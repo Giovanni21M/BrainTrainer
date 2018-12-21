@@ -51,30 +51,26 @@ public class MainActivity extends AppCompatActivity {
 
         // set the solution and other integers to a random answerButton
         private void solutionView() {
-            try {
-                Random random = new Random();
+            Random random = new Random();
 
-                Button hashMapButton;
+            Button hashMapButton;
 
-                hashMap.put(1, answerOne);
-                hashMap.put(2, answerTwo);
-                hashMap.put(3, answerThree);
-                hashMap.put(4, answerFour);
+            hashMap.put(1, answerOne);
+            hashMap.put(2, answerTwo);
+            hashMap.put(3, answerThree);
+            hashMap.put(4, answerFour);
 
-                for (int i = 0; i < 4; i++) {
-                    int x = random.nextInt(4) + 1;
-                    hashMapButton = hashMap.get(x);
-                    if (i == x) {
-                        Log.i("String", "if");
-                        hashMapButton.setText(solution); // not working
-                    } else {
-                        Log.i("String", "else");
-                        int y = random.nextInt(100);
-                        hashMapButton.setText(solution + y);  // not working
-                    }
+            for (int i = 0; i < 4; i++) {
+                int x = random.nextInt(4) + 1;
+                hashMapButton = hashMap.get(x);
+                if (i == x) {
+                    Log.i("String", "if");
+                    hashMapButton.setText(Integer.toString(solution));
+                } else {
+                    Log.i("String", "else");
+                    int y = random.nextInt(100);
+                    hashMapButton.setText(Integer.toString(solution + y));  // not working
                 }
-            } catch (Exception e) {
-                Log.e(TAG, "Solution and other numbers should be randomly set.", e);
             }
         }
 
