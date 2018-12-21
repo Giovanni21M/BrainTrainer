@@ -17,6 +17,10 @@ public class MainActivity extends AppCompatActivity {
 
     final BrainGame brainGame = new BrainGame();
 
+    public static final String TAG = MainActivity.class.getName();
+
+    static HashMap<Integer, Button> hashMap = new HashMap<Integer, Button>();
+
     Button answerOne;
     Button answerTwo;
     Button answerThree;
@@ -47,27 +51,30 @@ public class MainActivity extends AppCompatActivity {
 
         // set the solution and other integers to a random answerButton
         private void solutionView() {
-            Random random = new Random();
+            try {
+                Random random = new Random();
 
-            HashMap<Integer, Button> hashMap = new HashMap<Integer, Button>();
-            Button hashMapButton;
+                Button hashMapButton;
 
-            hashMap.put(0, answerOne);
-            hashMap.put(1, answerTwo);
-            hashMap.put(2, answerThree);
-            hashMap.put(3, answerFour);
+                hashMap.put(1, answerOne);
+                hashMap.put(2, answerTwo);
+                hashMap.put(3, answerThree);
+                hashMap.put(4, answerFour);
 
-            int x = random.nextInt(3);
-
-            for (int i = 0; i < 3; i++) {
-                if (i == x) {
+                for (int i = 0; i < 4; i++) {
+                    int x = random.nextInt(4) + 1;
                     hashMapButton = hashMap.get(x);
-                    hashMapButton.setText(solution);
-                } else {
-                    hashMapButton = hashMap.get(x);
-                    int y = random.nextInt(100);
-                    hashMapButton.setText(solution + y);
+                    if (i == x) {
+                        Log.i("String", "if");
+                        hashMapButton.setText(solution); // not working
+                    } else {
+                        Log.i("String", "else");
+                        int y = random.nextInt(100);
+                        hashMapButton.setText(solution + y);  // not working
+                    }
                 }
+            } catch (Exception e) {
+                Log.e(TAG, "Solution and other numbers should be randomly set.", e);
             }
         }
 
