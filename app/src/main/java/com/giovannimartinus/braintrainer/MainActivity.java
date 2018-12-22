@@ -51,58 +51,70 @@ public class MainActivity extends AppCompatActivity {
 
         // set the solution and other integers to a random answerButton
         private void solutionView() {
-            Random random = new Random();
+            if (isActive == true) {
+                Random random = new Random();
 
-            Button hashMapButton;
+                Button hashMapButton;
 
-            hashMap.put(1, answerOne);
-            hashMap.put(2, answerTwo);
-            hashMap.put(3, answerThree);
-            hashMap.put(4, answerFour);
+                hashMap.put(1, answerOne);
+                hashMap.put(2, answerTwo);
+                hashMap.put(3, answerThree);
+                hashMap.put(4, answerFour);
 
-            for (int i = 0; i < 4; i++) {
-                int x = random.nextInt(4) + 1;
-                hashMapButton = hashMap.get(x);
-                if (i == x) {
-                    Log.i("String", "if");
-                    hashMapButton.setText(Integer.toString(solution));
-                } else {
-                    Log.i("String", "else");
-                    int y = random.nextInt(100);
-                    hashMapButton.setText(Integer.toString(solution + y));  // not working
+                for (int i = 0; i < 4; i++) {
+                    int x = random.nextInt(4) + 1;
+                    hashMapButton = hashMap.get(x);
+                    if (i == x) {
+                        Log.i("String", "if");
+                        hashMapButton.setText(Integer.toString(solution));
+                    } else {
+                        Log.i("String", "else");
+                        int y = random.nextInt(100);
+                        hashMapButton.setText(Integer.toString(solution + y));  // not working
+                    }
                 }
+            } else {
+                answerOne.setText("Answer 1");
+                answerTwo.setText("Answer 2");
+                answerThree.setText("Answer 3");
+                answerFour.setText("Answer 4");
             }
         }
 
         // generate the equation and set the solution
         private void equationView() {
-            Random random = new Random();
+            if (isActive == true) {
+                Random random = new Random();
 
-            int x = random.nextInt(100);
-            int y = random.nextInt(100);
+                int x = random.nextInt(100);
+                int y = random.nextInt(100);
 
-            String operators = "+-*/";
-            String operator = Character.toString(operators.charAt(random.nextInt(operators.length())));
+                String operators = "+-*/";
+                String operator = Character.toString(operators.charAt(random.nextInt(operators.length())));
 
-            String xyz = x + " " + operator + " " + y;
-            equationTextView.setText(xyz);
+                String xyz = x + " " + operator + " " + y;
+                equationTextView.setText(xyz);
 
-            switch (operator) {
-                case "+":
-                    solution = x + y;
-                    break;
-                case "-":
-                    solution = x - y;
-                    break;
-                case "*":
-                    solution = x * y;
-                    break;
-                case "/":
-                    solution = x / y;
-                    break;
+                switch (operator) {
+                    case "+":
+                        solution = x + y;
+                        break;
+                    case "-":
+                        solution = x - y;
+                        break;
+                    case "*":
+                        solution = x * y;
+                        break;
+                    case "/":
+                        solution = x / y;
+                        break;
+                }
+
+                solutionView();
+            } else {
+                equationTextView.setText("Equation");
+                solutionView();
             }
-
-            solutionView();
         }
 
         /* check if selected answer matches solution
@@ -167,9 +179,19 @@ public class MainActivity extends AppCompatActivity {
 
         // start the game
         private void hitPlay() {
-            buttonEnabled(answerButtonLayout);
-            countDown();
-            equationView();
+            if (isActive == false) {
+                playButton.setText("Stop");
+                buttonEnabled(answerButtonLayout);
+                countDown();
+                equationView();
+            } else {
+                isActive = false;
+                playButton.setText("Play");
+                countTextView.setText("30");
+                buttonEnabled(answerButtonLayout);
+                countDownTimer.cancel();
+                equationView();
+            }
         }
 
     }
