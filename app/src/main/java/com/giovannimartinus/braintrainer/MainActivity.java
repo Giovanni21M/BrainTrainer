@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.TextView;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -19,7 +19,9 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = MainActivity.class.getName();
 
-    static HashMap<Integer, Button> hashMap = new HashMap<Integer, Button>();
+    //static HashMap<Integer, Button> hashMap = new HashMap<Integer, Button>();
+    static ArrayList<Integer> answersList = new ArrayList<Integer>();
+    int locationOfCorrectAnswer;
 
     Button answerOne;
     Button answerTwo;
@@ -52,26 +54,29 @@ public class MainActivity extends AppCompatActivity {
         // set the solution and other integers to a random answerButton
         private void solutionView() {
             if (isActive == true) {
+
+                answersList.clear();
                 Random random = new Random();
 
-                Button hashMapButton;
-
-                hashMap.put(1, answerOne);
-                hashMap.put(2, answerTwo);
-                hashMap.put(3, answerThree);
-                hashMap.put(4, answerFour);
-
-                int x = random.nextInt(4) + 1;
+                int y;
+                locationOfCorrectAnswer = random.nextInt(4) + 1;
 
                 for (int i = 0; i < 4; i++) {
-                    hashMapButton = hashMap.get(x);
-                    if (i == x) {
-                        hashMapButton.setText(Integer.toString(solution));
+                    if (i == locationOfCorrectAnswer) {
+                        answersList.add(solution);
                     } else {
-                        int y = random.nextInt(100);
-                        hashMapButton.setText(Integer.toString(solution + y));
+                        y = random.nextInt(10000) - 10000;
+                        while (y == solution) {
+                            y = random.nextInt(10000) - 10000;
+                        }
+                        answersList.add(y);
                     }
                 }
+                Log.i("Answer's List", answersList.toString());
+                answerOne.setText(Integer.toString(answersList.get(0)));
+                answerTwo.setText(Integer.toString(answersList.get(1)));
+                answerThree.setText(Integer.toString(answersList.get(2)));
+                answerFour.setText(Integer.toString(answersList.get(3)));
             } else {
                 answerOne.setText("Answer 1");
                 answerTwo.setText("Answer 2");
