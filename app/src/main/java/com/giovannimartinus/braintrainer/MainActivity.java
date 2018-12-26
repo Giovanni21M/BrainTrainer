@@ -61,16 +61,15 @@ public class MainActivity extends AppCompatActivity {
                 hashMap.put(3, answerThree);
                 hashMap.put(4, answerFour);
 
+                int x = random.nextInt(4) + 1;
+
                 for (int i = 0; i < 4; i++) {
-                    int x = random.nextInt(4) + 1;
                     hashMapButton = hashMap.get(x);
                     if (i == x) {
-                        Log.i("String", "if");
                         hashMapButton.setText(Integer.toString(solution));
                     } else {
-                        Log.i("String", "else");
                         int y = random.nextInt(100);
-                        hashMapButton.setText(Integer.toString(solution + y));  // not working
+                        hashMapButton.setText(Integer.toString(solution + y));
                     }
                 }
             } else {
@@ -117,16 +116,18 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        /* check if selected answer matches solution
+        // check if selected answer matches solution
         private void answerCheck(Button button) {
             if (button.getText() == Integer.toString(solution)) {
-                feedBack(1);
+                Log.i("Correct Answer", "Chosen");
+                //feedBack(1);
             } else if (button.getText() != Integer.toString(solution)) {
-                feedBack(2);
+                Log.i("Wrong Answer", "Chosen");
+                //feedBack(2);
             }
-        }*/
+        }
 
-        /* answer chosen by user
+        // answer chosen by user
         private void answerButton(View view) {
             Button clickedButton = (Button) view;
 
@@ -144,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
                     answerCheck(clickedButton); // a view may need to be passed by specific id instead
                     break;
             }
-        }*/
+        }
 
         // convert millis to seconds and set countTextView
         private void countView(int x) {
