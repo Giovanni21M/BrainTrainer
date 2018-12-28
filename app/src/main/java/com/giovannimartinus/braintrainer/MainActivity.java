@@ -119,34 +119,12 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        // check if selected answer matches solution
-        private void answerCheck(Button button) {
-            if (button.getText() == Integer.toString(solution)) {
-                Log.i("Correct Answer", "Chosen");
-                //feedBack(1);
-            } else if (button.getText() != Integer.toString(solution)) {
-                Log.i("Wrong Answer", "Chosen");
-                //feedBack(2);
-            }
-        }
-
         // answer chosen by user
         private void answerButton(View view) {
-            Button clickedButton = (Button) view;
-
-            switch (clickedButton.getId()) {
-                case R.id.answerOne:
-                    answerCheck(clickedButton); // a view may need to be passed by specific id instead
-                    break;
-                case R.id.answerTwo:
-                    answerCheck(clickedButton); // a view may need to be passed by specific id instead
-                    break;
-                case R.id.answerThree:
-                    answerCheck(clickedButton); // a view may need to be passed by specific id instead
-                    break;
-                case R.id.answerFour:
-                    answerCheck(clickedButton); // a view may need to be passed by specific id instead
-                    break;
+            if (view.getTag().toString().equals(Integer.toString(locationOfCorrectAnswer))) {
+                Log.i("Answer was", "correct");
+            } else {
+                Log.i("Answer was", "wrong");
             }
         }
 
@@ -200,10 +178,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    /* determine which answer is chosen
+    // determine which answer is chosen
     public void answerClick(View view) {
         brainGame.answerButton(view);
-    }*/
+    }
 
     // play game
     public void playClick(View view) {
