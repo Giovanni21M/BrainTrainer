@@ -3,7 +3,6 @@ package com.giovannimartinus.braintrainer;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
@@ -16,8 +15,6 @@ import java.util.concurrent.TimeUnit;
 public class MainActivity extends AppCompatActivity {
 
     final BrainGame brainGame = new BrainGame();
-
-    public static final String TAG = MainActivity.class.getName();
 
     //static HashMap<Integer, Button> hashMap = new HashMap<Integer, Button>();
     static ArrayList<Integer> answersList = new ArrayList<Integer>();
@@ -126,10 +123,8 @@ public class MainActivity extends AppCompatActivity {
         // answer chosen by user
         private void answerButton(View view) {
             if (view.getTag().toString().equals(Integer.toString(locationOfCorrectAnswer))) {
-                Log.i("Answer was", "correct");
                 feedBack(1);
             } else {
-                Log.i("Answer was", "wrong");
                 feedBack(2);
             }
         }
