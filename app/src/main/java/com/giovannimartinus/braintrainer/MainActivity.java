@@ -54,12 +54,11 @@ public class MainActivity extends AppCompatActivity {
         // set the solution and other integers to a random answerButton
         private void solutionView() {
             if (isActive == true) {
-
                 answersList.clear();
                 Random random = new Random();
 
                 int y;
-                locationOfCorrectAnswer = random.nextInt(4) + 1;
+                locationOfCorrectAnswer = random.nextInt(4);
 
                 for (int i = 0; i < 4; i++) {
                     if (i == locationOfCorrectAnswer) {
@@ -72,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
                         answersList.add(y);
                     }
                 }
-                Log.i("Answer's List", answersList.toString());
                 answerOne.setText(Integer.toString(answersList.get(0)));
                 answerTwo.setText(Integer.toString(answersList.get(1)));
                 answerThree.setText(Integer.toString(answersList.get(2)));
