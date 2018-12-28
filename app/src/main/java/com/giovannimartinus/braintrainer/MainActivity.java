@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
 
     //static HashMap<Integer, Button> hashMap = new HashMap<Integer, Button>();
     static ArrayList<Integer> answersList = new ArrayList<Integer>();
-    int locationOfCorrectAnswer;
 
     Button answerOne;
     Button answerTwo;
@@ -30,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     Button playButton;
     TextView equationTextView;
     TextView countTextView;
+    TextView feedbackView;
+    TextView scoreTextView;
     GridLayout answerButtonLayout;
 
     class BrainGame {
@@ -38,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
 
         boolean isActive = false;
         int solution;
+        int locationOfCorrectAnswer;
+        int score = 0;
+        int problems = 0;
 
         // enable or disable answer buttons
         private void buttonEnabled(GridLayout gridLayout) {
@@ -123,8 +127,10 @@ public class MainActivity extends AppCompatActivity {
         private void answerButton(View view) {
             if (view.getTag().toString().equals(Integer.toString(locationOfCorrectAnswer))) {
                 Log.i("Answer was", "correct");
+                feedBack(1);
             } else {
                 Log.i("Answer was", "wrong");
+                feedBack(2);
             }
         }
 
@@ -151,13 +157,32 @@ public class MainActivity extends AppCompatActivity {
                         isActive = false;
                         countTextView.setText("0");
                         buttonEnabled(answerButtonLayout);
+                        feedBack(3);
                     }
                 }.start();
             }
         }
 
-        /* display correct, wrong, and finally the score
-        private void feedBack(int x) {}*/
+        // display correct, wrong, and finally the score
+        private void feedBack(int x) {
+            if (x == 1) {
+                feedbackView.setText("Correct!");
+                score++;
+                problems++;
+                scoreTextView.setText(Integer.toString(score) + "/" + Integer.toString(problems));
+                equationView();
+            } else if (x == 2) {
+                feedbackView.setText("Wrong!");
+                problems++;
+                scoreTextView.setText(Integer.toString(score) + "/" + Integer.toString(problems));
+                equationView();
+            } else if (x == 3) {
+                problems = 0;
+                score = 0;
+                scoreTextView.setText("Score");
+                feedbackView.setText("You're score is " + Integer.toString(score) + "/" + Integer.toString(problems));
+            }
+        }
 
         // start the game
         private void hitPlay() {
@@ -171,6 +196,7 @@ public class MainActivity extends AppCompatActivity {
                 playButton.setText("Play");
                 countTextView.setText("30s");
                 buttonEnabled(answerButtonLayout);
+                feedBack(3);
                 countDownTimer.cancel();
                 equationView();
             }
@@ -197,9 +223,11 @@ public class MainActivity extends AppCompatActivity {
         answerTwo = (Button) findViewById(R.id.answerTwo);
         answerThree = (Button) findViewById(R.id.answerThree);
         answerFour = (Button) findViewById(R.id.answerFour);
+        playButton = (Button) findViewById(R.id.playButton);
         answerButtonLayout = (GridLayout) findViewById(R.id.answerButtonLayout);
         equationTextView = (TextView) findViewById(R.id.equationTextView);
         countTextView = (TextView) findViewById(R.id.countTextView);
-        playButton = (Button) findViewById(R.id.playButton);
+        feedbackView = (TextView) findViewById(R.id.feedbackView);
+        scoreTextView = (TextView) findViewById(R.id.scoreTextView);
     }
 }
