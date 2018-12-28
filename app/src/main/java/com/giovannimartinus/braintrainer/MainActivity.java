@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
         // convert millis to seconds and set countTextView
         private void countView(int x) {
             long seconds = TimeUnit.MILLISECONDS.toSeconds(x) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(x));
-            String secondsString = String.format("%02d", seconds);
+            String secondsString = String.format("%02d" + "s", seconds);
             countTextView.setText(secondsString);
         }
 
@@ -169,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 isActive = false;
                 playButton.setText("Play");
-                countTextView.setText("30");
+                countTextView.setText("30s");
                 buttonEnabled(answerButtonLayout);
                 countDownTimer.cancel();
                 equationView();
